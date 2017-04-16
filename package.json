@@ -2,7 +2,7 @@
   "name": "react-design-easier",
   "version": "1.0.0",
   "description": "React migration from a flash application developed a few years ago",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack-dev-server --hot --inline --content-base ./src --open"
@@ -14,12 +14,31 @@
     "drawing",
     "application"
   ],
-  "author": "",
+  "author": {
+    "name" : "Stéphane Cottereau",
+    "email" : "s_cottereau@yahooo.fr",
+    "url" : "https://github.com/senocular"
+  },
   "license": "MIT",
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
+  "bugs" : {
+    "url" : "https://github.com/stefcot/react-design-easier/issues",
+    "email" : "s_cottereau@yahoo.fr"
+  },
+  "contributors" : [
+    {
+      "name" : "Trevor McCauley",
+      "email" : "senocular@hotmail.com",
+      "url" : "https://github.com/senocular"
+  }],
+  "repository" :
+    {
+      "type" : "git",
+      "url" : "https://github.com/stefcot/react-design-easier.git"
+    },
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.1.1",
