@@ -12,7 +12,7 @@ module.exports = {
      * Output settings, dest file and file name
      */
     output: {
-        path: path.resolve(__dirname, './build'), // Automatically crated by webpack
+        path: path.resolve(__dirname, './build'), // Automatically created by webpack
         filename: 'app.bundle.js',
     },
     resolve: {
@@ -21,12 +21,6 @@ module.exports = {
     module: {
         loaders: [
             {
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
-                }
-            },
-            {
                 test: /\.html$/,
                 loader: 'file-loader?name=[name].[ext]',
             },
@@ -34,14 +28,10 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-            },
-            {
-                test: /\.svg$/,
-                loader: 'react-svg?jsx=1',
                 query: {
-                    jsx: true
-                }
-            },
+                    presets: ['es2015','react']
+                },
+            }
         ],
     },
     plugins: [

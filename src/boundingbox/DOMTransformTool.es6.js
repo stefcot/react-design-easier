@@ -12,24 +12,28 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+// FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
 // SOFTWARE.
-import TransformTool from 'TransformTool.es6';
 
+import TransformTool from './TransformTool.es6';
+
+/**
+ * @extends
+ */
 class DOMTransformTool extends TransformTool {
 	constructor(container) {
 		super(container);
 	}
 
-    setControls = function(controls){
+    setControls(controls){
         // remove old, persistent svg elements
         if (this.controls){
-            let i;
+            //let i;
             let n = this.controls.length;
-            for (i=0; i<n; i++){
+            for (let i=0; i<n; i++){
                 this.controls[i].undraw(this.container);
             }
         }

@@ -1,17 +1,29 @@
-import Control from 'Control.es6';
-import DOMControl from 'DOMControl.es6';
-import ControlSet from 'ControlSet.es6';
-import DOMTransformTool from 'DOMTransformTool.es6';
-import Picture from 'Picture.es6';
+import { TRANSLATE, BORDER, ROTATE, SCALE_X, SCALE_Y, SCALE, SCALE_UNIFORM, REGISTRATION, SKEW_Y, SKEW_X, ROTATE_SCALE, TARGET } from './Control.es6';
 
+import DOMControl from './DOMControl.es6';
+import ControlSet from './ControlSet.es6';
+import DOMTransformTool from './DOMTransformTool.es6';
+import Picture from './Picture.es6';
+import Mouse from './Mouse.es6';
+
+/**
+ *
+ */
 class TramformDOMPictures {
-	constructor() {
+    /**
+     *
+     */
+	constructor() {}
+
+    /**
+     *
+     * @return {TramformDOMPictures|*}
+     */
+    init(){
         let toolElem = document.getElementById("svg-tool");
+
         this.tool = new DOMTransformTool(toolElem);
-
-        this._type = 'TramformDOMPictures';
         this.dom = document.getElementById("dom");
-
         this.displayList = [
             new Picture(document.getElementById("dunny"),0,0),
             new Picture(document.getElementById("fatcap"),150,100),
@@ -31,14 +43,9 @@ class TramformDOMPictures {
         this.render();
     }
 
-    get type() {
-        return this._type;
-    }
-
-    set type(value) {
-        this._type = value;
-    }
-
+    /**
+     *
+     */
     bindHandlers(){
         // instance-specific event handlers bound to this
         this.up = this.up.bind(this);
@@ -47,44 +54,54 @@ class TramformDOMPictures {
         this.render = this.render.bind(this);
     }
 
+    /**
+     *
+     */
     setupTool(){
         ControlSet.controlClass = DOMControl;
         let controls = this.getCustomControls();
         this.tool.setControls(controls);
     }
 
-    static getCustomControls(){
-        let translater = new DOMControl(Control.TRANSLATE);
+    /**
+     *
+     * @return {Array}
+     */
+    getCustomControls(){
+        let translater = new DOMControl(TRANSLATE);
         // translate control is "selected" by clicking
         // on the target's shape, not the control point
         translater.hitTestTarget = true;
 
-        let targetContent = new DOMControl(Control.TARGET);
+        let targetContent = new DOMControl(TARGET);
         return [
-            new DOMControl(Control.ROTATE, 0,0, 0,0, 30),
-            new DOMControl(Control.ROTATE, 0,1, 0,0, 30),
-            new DOMControl(Control.ROTATE, 1,0, 0,0, 30),
-            new DOMControl(Control.ROTATE, 1,1, 0,0, 30),
+            new DOMControl(ROTATE, 0,0, 0,0, 30),
+            new DOMControl(ROTATE, 0,1, 0,0, 30),
+            new DOMControl(ROTATE, 1,0, 0,0, 30),
+            new DOMControl(ROTATE, 1,1, 0,0, 30),
             targetContent, // renders target between controls
             translater,
-            new DOMControl(Control.BORDER),
-            new DOMControl(Control.REGISTRATION, .5,.5, 0,0, 10),
-            new DOMControl(Control.SKEW_Y, 0,.5, 0,0, 10),
-            new DOMControl(Control.SCALE_X, 1,.5, 0,0, 10),
-            new DOMControl(Control.SKEW_X, .5,0, 0,0, 10),
-            new DOMControl(Control.SCALE_Y, .5,1, 0,0, 10),
-            new DOMControl(Control.SCALE, 0,0, 0,0, 10),
-            new DOMControl(Control.SCALE, 0,1, 0,0, 10),
-            new DOMControl(Control.SCALE, 1,0, 0,0, 10),
-            new DOMControl(Control.SCALE, 1,1, 0,0, 10),
-            new DOMControl(Control.ROTATE_SCALE, 1,0, 15,-15, 10),
-            new DOMControl(Control.SCALE_UNIFORM, 1,1, 15,15, 10),
-            new DOMControl(Control.ROTATE, .5,0, 0,-20)
+            new DOMControl(BORDER),
+            new DOMControl(REGISTRATION, .5,.5, 0,0, 10),
+            new DOMControl(SKEW_Y, 0,.5, 0,0, 10),
+            new DOMControl(SCALE_X, 1,.5, 0,0, 10),
+            new DOMControl(SKEW_X, .5,0, 0,0, 10),
+            new DOMControl(SCALE_Y, .5,1, 0,0, 10),
+            new DOMControl(SCALE, 0,0, 0,0, 10),
+            new DOMControl(SCALE, 0,1, 0,0, 10),
+            new DOMControl(SCALE, 1,0, 0,0, 10),
+            new DOMControl(SCALE, 1,1, 0,0, 10),
+            new DOMControl(ROTATE_SCALE, 1,0, 15,-15, 10),
+            new DOMControl(SCALE_UNIFORM, 1,1, 15,15, 10),
+            new DOMControl(ROTATE, .5,0, 0,-20)
         ];
     }
 
+    /**
+     *
+     * @param event
+     */
     down(event){
-
         Mouse.get(event, this.dom);
         let controlled = this.tool.start(Mouse.x, Mouse.y);
 
@@ -94,7 +111,7 @@ class TramformDOMPictures {
             // selection occurred
             // force select the translate control
             // to be able to start moving right away
-            controlled = this.tool.start(Mouse.x, Mouse.y, this.findControlByType(Control.TRANSLATE));
+            controlled = this.tool.start(Mouse.x, Mouse.y, this.findControlByType(TRANSLATE));
         }
 
         if (controlled){
@@ -107,8 +124,11 @@ class TramformDOMPictures {
         event.preventDefault();
     }
 
+    /**
+     *
+     * @param event
+     */
     move(event){
-
         Mouse.get(event, this.dom);
         this.applyDynamicControls(event);
         this.tool.move(Mouse.x, Mouse.y);
@@ -117,8 +137,11 @@ class TramformDOMPictures {
         event.preventDefault();
     }
 
+    /**
+     *
+     * @param event
+     */
     up(event){
-
         this.tool.end();
 
         this.dom.removeEventListener(Mouse.MOVE, this.move);
@@ -128,6 +151,10 @@ class TramformDOMPictures {
         event.preventDefault();
     }
 
+    /**
+     *
+     * @param event
+     */
     applyDynamicControls(event){
         // if dynamic, set controls based on
         // keyboard keys
@@ -135,22 +162,25 @@ class TramformDOMPictures {
         if (dyn){
             if (event.ctrlKey){
                 if (event.shiftKey){
-                    dyn.type = Control.ROTATE_SCALE;
+                    dyn.type = ROTATE_SCALE;
                 }else{
-                    dyn.type = Control.ROTATE;
+                    dyn.type = ROTATE;
                 }
             }else if (event.shiftKey){
-                dyn.type = Control.SCALE;
+                dyn.type = SCALE;
             }else{
-                dyn.type = Control.TRANSLATE;
+                dyn.type = TRANSLATE;
             }
         }
     }
 
+    /**
+     *
+     * @return {*}
+     */
     getDynamicControl(){
-        let i;
         let n = this.tool.controls.length;
-        for (i=0; i<n; i++){
+        for (let i=0; i<n; i++){
             if (this.tool.controls[i].dynamicUV){
                 return this.tool.controls[i];
             }
@@ -158,10 +188,14 @@ class TramformDOMPictures {
         return null;
     }
 
+    /**
+     *
+     * @param type
+     * @return {*}
+     */
     findControlByType(type){
-        let i;
         let n = this.tool.controls.length;
-        for (i=0; i<n; i++){
+        for (let i=0; i<n; i++){
             if (this.tool.controls[i].type === type){
                 return this.tool.controls[i];
             }
@@ -169,18 +203,28 @@ class TramformDOMPictures {
         return null;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return {boolean}
+     */
     selectImage(x, y){
         let pic = null;
         let t = null;
 
         // walk backwards selecting top-most first
         let i = this.displayList.length;
+        //
         while (i--){
+            //
             pic = this.displayList[i];
+            //
             t = pic.transform;
+            //
             if (t.matrix.containsPoint(x, y, t.width, t.height)){
+                //
                 if (this.tool.target !== t){
-
                     // select
                     this.tool.setTarget(t);
                     // reorder for layer rendering
@@ -188,30 +232,75 @@ class TramformDOMPictures {
                     this.displayList.push(pic);
                     return true;
                 }
-
                 // already selected
                 return false;
             }
         }
-
         // deselect
         this.tool.setTarget(null);
         return false;
     }
 
+    /**
+     *
+     */
     render(){
         this.drawDisplayList();
         this.tool.draw();
     }
 
+    /**
+     *
+     */
     drawDisplayList(){
-        let i;
         let n = this.displayList.length;
-        for (i=0; i<n; i++){
+        for (let i=0; i<n; i++){
             this.displayList[i].image.style.zIndex = i;
             this.displayList[i].draw();
         }
     }
+
+    /**
+     *
+     */
+    setStandardMode(){
+        console.log(this);
+
+        this.tool.setControls(ControlSet.getStandard());
+        this.render();
+    };
+
+    /**
+     *
+     */
+    setScalerMode(){
+        this.tool.setControls(ControlSet.getScaler());
+        this.render();
+    };
+
+    /**
+     *
+     */
+    setScalerWithRotateMode(){
+        this.tool.setControls(ControlSet.getScalerWithRotate());
+        this.render();
+    };
+
+    /**
+     *
+     */
+    setUniformScalerMode(){
+        this.tool.setControls(ControlSet.getUniformScaler());
+        this.render();
+    };
+
+    /**
+     *
+     */
+    setDynamicMode(){
+        this.tool.setControls(ControlSet.getDynamic());
+        this.render();
+    };
 }
 
-export default new TramformDOMPictures();
+export default TramformDOMPictures;

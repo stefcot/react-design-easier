@@ -12,15 +12,16 @@
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+// FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
 // SOFTWARE.
 
-import Matrix from 'Matrix.es6';
+import Matrix from './Matrix.es6';
+import { SCALE, SCALE_X, SCALE_Y, SCALE_UNIFORM, SKEW_X, SKEW_Y, ROTATE_SCALE, ROTATE, TRANSLATE, REGISTRATION}  from './Control.es6';
 
-class TransformTool {
+export default class {
 
 	constructor(container) {
         this.container = container;
@@ -89,9 +90,9 @@ class TransformTool {
         if (!controls || !controls.length){
             return;
         }
-        let i;
+
         let n = controls.length;
-        for (i=0; i<n; i++){
+        for (let i=0; i<n; i++){
             controls[i].tool = this;
             this.controls[i] = controls[i];
             this.controls[i].updatePosition();
@@ -99,9 +100,8 @@ class TransformTool {
     }
 
     updateControls(){
-        let i;
         let n = this.controls.length;
-        for (i=0; i<n; i++){
+        for (let i=0; i<n; i++){
             this.controls[i].updatePosition();
         }
     }
@@ -110,6 +110,7 @@ class TransformTool {
         // walking in reverse order to find those
         // drawn on top (later in list) first
         let i = this.controls.length;
+
         while(i--){
             if (this.controls[i].contains(x, y)){
                 return this.controls[i];
@@ -125,9 +126,8 @@ class TransformTool {
             return;
         }
 
-        let i;
         let n = this.controls.length;
-        for (i=0; i<n; i++){
+        for (let i=0; i<n; i++){
             this.controls[i].draw(this.container);
         }
     }
@@ -211,7 +211,7 @@ class TransformTool {
                 }
             }
 
-            // letiables for working with position and size
+            // variables for working with position and size
             let x = 0;
             let y = 0;
             let w = this.target.width;
@@ -243,26 +243,26 @@ class TransformTool {
             // perform transform based on control type
             switch(this.control.type){
 
-                case Control.SCALE:{
+                case SCALE:{
                     x = (cu + this.dU)/cu;
                     y = (cv + this.dV)/cv;
                     this.preMatrix.scale(x, y);
                     break;
                 }
 
-                case Control.SCALE_X:{
+                case SCALE_X:{
                     x = (cu + this.dU)/cu;
                     this.preMatrix.scale(x, 1);
                     break;
                 }
 
-                case Control.SCALE_Y:{
+                case SCALE_Y:{
                     y = (cv + this.dV)/cv;
                     this.preMatrix.scale(1, y);
                     break;
                 }
 
-                case Control.SCALE_UNIFORM:{
+                case SCALE_UNIFORM:{
                     x = (cu + this.dU)/cu;
                     y = (cv + this.dV)/cv;
 
@@ -287,17 +287,17 @@ class TransformTool {
                     break;
                 }
 
-                case Control.SKEW_X:{
+                case SKEW_X:{
                     this.preMatrix.c = (w/h) * (this.dU/cv);
                     break;
                 }
 
-                case Control.SKEW_Y:{
+                case SKEW_Y:{
                     this.preMatrix.b = (h/w) * (this.dV/cu);
                     break;
                 }
 
-                case Control.ROTATE_SCALE:{
+                case ROTATE_SCALE:{
                     // rotation in global space
                     x = this.startX - this.regX;
                     y = this.startY - this.regY;
@@ -321,7 +321,7 @@ class TransformTool {
                     break;
                 }
 
-                case Control.ROTATE:{
+                case ROTATE:{
                     // rotation in global space
                     x = Math.atan2(this.startY - this.regY, this.startX - this.regX);
                     y = Math.atan2(this.endY - this.regY, this.endX - this.regX);
@@ -329,13 +329,13 @@ class TransformTool {
                     break;
                 }
 
-                case Control.TRANSLATE:{
+                case TRANSLATE:{
                     // translate in global space
                     this.postMatrix.translate(this.endX - this.startX, this.endY - this.startY);
                     break;
                 }
 
-                case Control.REGISTRATION:{
+                case REGISTRATION:{
                     this.regEndU = this.regStartU + this.dU;
                     this.regEndV = this.regStartV + this.dV;
                     // reg UV isn't set until end()
@@ -439,5 +439,3 @@ class TransformTool {
         }
     }
 }
-
-export default TransformTool;

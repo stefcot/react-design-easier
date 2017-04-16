@@ -1,7 +1,7 @@
 {
-  "name": "react-svg-test",
+  "name": "react-design-easier",
   "version": "1.0.0",
-  "description": "",
+  "description": "React migration from a flash application developed a few years ago",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,10 +9,13 @@
   },
   "keywords": [
     "svg",
-    "react"
+    "senocular",
+    "react",
+    "drawing",
+    "application"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
@@ -26,7 +29,6 @@
     "eslint": "^3.17.1",
     "file-loader": "^0.10.1",
     "react-hot-loader": "^3.0.0-beta.6",
-    "react-svg-loader": "^1.1.1",
     "webpack": "^2.1.0-beta.27",
     "webpack-dev-server": "^2.1.0-beta.11"
   }

@@ -4,21 +4,25 @@
 import React from 'react';
 import Save from './icons/Save';
 
-const Toolbar = React.createClass({
+
+class Button extends React.Component {
+    constructor(){
+        super();
+    }
     /**
      *
      */
     componentDidMount() {
         this.refs.ToolBarButton_BG.addEventListener('click', this.props.onClick);
         console.log('ToolBarButton_BG : ', this.refs.ToolBarButton_BG);
-    },
+    }
 
     /**
      *
      */
     componentWillUnmount(){
         this.refs.ToolBarButton_BG.removeEventListener('click', this.props.onClick);
-    },
+    }
 
     /**
      * fetch proper icon according to props
@@ -27,7 +31,7 @@ const Toolbar = React.createClass({
     renderIcon() {
         let Icon = Components[this.props.icon];
         return <Icon />
-    },
+    }
 
     /**
      *
@@ -60,10 +64,9 @@ const Toolbar = React.createClass({
                 </g>
             </g>)
     }
-})
+}
 
 
 
 
-
-export default Toolbar;
+export default Button;

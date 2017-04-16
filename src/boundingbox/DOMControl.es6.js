@@ -1,16 +1,33 @@
-/**
- * Created by Stephane on 4/12/2017.
- */
-import Control from 'Control.es6';
+// Copyright (C) 2013 Trevor McCauley
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+import Control, { SHAPE_CIRCLE, SHAPE_SQUARE, SHAPE_BORDER }  from './Control.es6';
+
+let idPrefix = "-dom-control-";
+let idCounter = 0;
 
 class DOMControl extends Control {
 
     constructor(type, u, v, offsetX, offsetY, size){
         super(type, u, v, offsetX, offsetY, size);
-
-        this.idPrefix = "-dom-control-";
-        this.idCounter = 0;
-        this.id = this.idPrefix + (++this.idCounter);
+        this.id = idPrefix + (++idCounter);
     }
 
     undraw(){
@@ -53,9 +70,12 @@ class DOMControl extends Control {
         let i = 0;
         let n = 0;
 
+        // console.log('----------------------------------------------------------');
+        // console.log('DOMControl::draw - this.shape : ', this.shape);
+
         switch(this.shape){
 
-            case Control.SHAPE_CIRCLE:{
+            case SHAPE_CIRCLE:{
                 if (!elem){
                     elem = document.createElementNS(container.namespaceURI, "circle");
                     elem.id = this.id;
@@ -63,13 +83,16 @@ class DOMControl extends Control {
                     this.setStyle(elem);
                     container.appendChild(elem);
                 }
+                // console.log('DOMControl::draw::SHAPE_CIRCLE - elem : ', elem);
+                // console.log('DOMControl::draw::SHAPE_CIRCLE - elem.id : ', elem.id);
+                // console.log('DOMControl::draw::SHAPE_CIRCLE - elem.r : ', elem.r);
 
                 elem.cx.baseVal.value = this.x;
                 elem.cy.baseVal.value = this.y;
                 break;
             }
 
-            case Control.SHAPE_SQUARE:{
+            case SHAPE_SQUARE:{
                 if (!elem){
                     elem = document.createElementNS(container.namespaceURI, "rect");
                     elem.id = this.id;
@@ -78,13 +101,15 @@ class DOMControl extends Control {
                     this.setStyle(elem);
                     container.appendChild(elem);
                 }
+                // console.log('DOMControl::draw::SHAPE_SQUARE - elem : ', elem);
+                // console.log('DOMControl::draw::SHAPE_SQUARE - elem.id : ', elem.id);
 
                 elem.x.baseVal.value = (this.x - this.size/2);
                 elem.y.baseVal.value = (this.y - this.size/2);
                 break;
             }
 
-            case Control.SHAPE_BORDER:{
+            case SHAPE_BORDER:{
                 if (!elem){
                     elem = document.createElementNS(container.namespaceURI, "polygon");
                     elem.id = this.id;
@@ -94,6 +119,8 @@ class DOMControl extends Control {
                     this.setStyle(elem, false);
                     container.appendChild(elem);
                 }
+                // console.log('DOMControl::draw::SHAPE_BORDER - elem : ', elem);
+                // console.log('DOMControl::draw::SHAPE_BORDER - elem.id : ', elem.id);
 
                 let pt;
                 if (this.tool && this.tool.target){

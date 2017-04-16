@@ -1,22 +1,40 @@
-/**
- * Created by Stephane on 4/12/2017.
- */
-class Control {
+// Copyright (C) 2013 Trevor McCauley
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
-    static SCALE = 1;
-    static SCALE_X = 2;
-    static SCALE_Y = 3;
-    static SCALE_UNIFORM = 4;
-    static ROTATE = 5;
-    static TRANSLATE = 6;
-    static REGISTRATION = 7;
-    static SKEW_X = 8;
-    static SKEW_Y = 9;
-    static BORDER = 10;
-    static TARGET = 11;
-    static ROTATE_SCALE = 12;
-    static SHAPE_CIRCLE = 1;
-    static SHAPE_SQUARE = 2;
+export const SCALE = 1;
+export const SCALE_X = 2;
+export const SCALE_Y = 3;
+export const SCALE_UNIFORM = 4;
+export const ROTATE = 5;
+export const TRANSLATE = 6;
+export const REGISTRATION = 7;
+export const SKEW_X = 8;
+export const SKEW_Y = 9;
+export const BORDER = 10;
+export const TARGET = 11;
+export const ROTATE_SCALE = 12;
+export const SHAPE_CIRCLE = 1;
+export const SHAPE_SQUARE = 2;
+export const SHAPE_BORDER = 3;
+
+export default class {
 
     constructor (type, u, v, offsetX, offsetY, size){
         this.tool = null;
@@ -41,39 +59,39 @@ class Control {
         this.transformCallback = null;
     }
 
-    setDefaultShape = function(){
+    setDefaultShape(){
 
         switch(this.type){
 
-            case Control.ROTATE:
-            case Control.ROTATE_SCALE:
-            case Control.REGISTRATION:{
-                this.shape = Control.SHAPE_CIRCLE;
+            case ROTATE:
+            case ROTATE_SCALE:
+            case REGISTRATION:{
+                this.shape = SHAPE_CIRCLE;
                 break;
             }
 
-            case Control.SCALE:
-            case Control.SCALE_UNIFORM:
-            case Control.SCALE_X:
-            case Control.SCALE_Y:
-            case Control.SKEW_X:
-            case Control.SKEW_Y:{
-                this.shape = Control.SHAPE_SQUARE;
+            case SCALE:
+            case SCALE_UNIFORM:
+            case SCALE_X:
+            case SCALE_Y:
+            case SKEW_X:
+            case SKEW_Y:{
+                this.shape = SHAPE_SQUARE;
                 break;
             }
-            case Control.BORDER:{
-                this.shape = Control.SHAPE_BORDER;
+            case BORDER:{
+                this.shape = SHAPE_BORDER;
                 break;
             }
         }
     }
 
-    updatePosition = function(){
+    updatePosition(){
         if (!this.tool || !this.tool.target){
             return;
         }
 
-        if (this.type === Control.REGISTRATION){
+        if (this.type === REGISTRATION){
             this.x = this.tool.regX;
             this.y = this.tool.regY;
             return;
@@ -101,7 +119,7 @@ class Control {
         }
     }
 
-    draw = function(ctx){
+    draw(ctx){
 
         // for custom drawing methods, call
         // that method and skip standard drawing
@@ -129,14 +147,14 @@ class Control {
 
         switch(this.shape){
 
-            case Control.SHAPE_CIRCLE:{
+            case SHAPE_CIRCLE:{
                 ctx.arc(this.x,this.y,this.size/2,0,Math.PI*2);
                 ctx.fill();
                 ctx.stroke();
                 break;
             }
 
-            case Control.SHAPE_SQUARE:{
+            case SHAPE_SQUARE:{
                 x = (this.x - this.size/2)|0;
                 y = (this.y - this.size/2)|0;
                 ctx.fillRect(x, y, this.size, this.size);
@@ -144,7 +162,7 @@ class Control {
                 break;
             }
 
-            case Control.SHAPE_BORDER:{
+            case SHAPE_BORDER:{
                 // render to half pixel for hard lines
                 ctx.fillStyle = "";
                 let t = this.tool.target;
@@ -174,7 +192,7 @@ class Control {
         ctx.restore();
     }
 
-    contains = function(x, y){
+    contains(x, y){
         if (this.hitTestTarget){
             let t = this.tool.target;
             return t.matrix.containsPoint(x, y, t.width, t.height);
@@ -192,5 +210,3 @@ class Control {
         return false;
     }
 }
-
-export default Control;
