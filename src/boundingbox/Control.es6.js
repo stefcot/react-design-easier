@@ -83,6 +83,7 @@ export default class {
                 this.shape = SHAPE_BORDER;
                 break;
             }
+            default:
         }
     }
 

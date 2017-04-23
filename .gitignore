@@ -131,6 +131,13 @@ cscope.po.out
 dist
 .nyc_output/
 coverage/
+svg
+node_modules
+bower_components
+src/scss/compass-mixins/lib
+src/scss/mathsass
+src/scss/partials/_normalize.scss
+src/js/polyfills
 
 ############################### NPM ##################################
 #npm
@@ -164,14 +171,6 @@ coverage
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
-
-# Dependency directory and files to be installed
-node_modules
-bower_components
-src/scss/compass-mixins/lib
-src/scss/mathsass
-src/scss/partials/_normalize.scss
-src/js/polyfills
 
 ################################# GIT #################################
 .gitconfig

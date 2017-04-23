@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "React migration from a flash application developed a few years ago",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "webpack-dev-server --hot --inline --content-base ./src --open"
-  },
   "keywords": [
     "svg",
     "senocular",
@@ -15,40 +11,63 @@
     "application"
   ],
   "author": {
-    "name" : "Stéphane Cottereau",
-    "email" : "s_cottereau@yahooo.fr",
-    "url" : "https://github.com/senocular"
+    "name": "Stéphane Cottereau",
+    "email": "s_cottereau@yahooo.fr",
+    "url": "https://github.com/senocular"
   },
   "license": "MIT",
   "dependencies": {
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-with-addons": "0.0.1"
   },
-  "bugs" : {
-    "url" : "https://github.com/stefcot/react-design-easier/issues",
-    "email" : "s_cottereau@yahoo.fr"
+  "bugs": {
+    "url": "https://github.com/stefcot/react-design-easier/issues",
+    "email": "s_cottereau@yahoo.fr"
   },
-  "contributors" : [
+  "contributors": [
     {
-      "name" : "Trevor McCauley",
-      "email" : "senocular@hotmail.com",
-      "url" : "https://github.com/senocular"
-  }],
-  "repository" :
-    {
-      "type" : "git",
-      "url" : "https://github.com/stefcot/react-design-easier.git"
-    },
+      "name": "Trevor McCauley",
+      "email": "senocular@hotmail.com",
+      "url": "https://github.com/senocular"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefcot/react-design-easier.git"
+  },
   "devDependencies": {
+    "babel": "^6.23.0",
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
-    "eslint": "^3.17.1",
+    "cpy-cli": "^1.0.1",
+    "eslint": "^3.19.0",
+    "eslint-loader": "^1.7.1",
     "file-loader": "^0.10.1",
+    "npm-run-all": "^4.0.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "webpack": "^2.1.0-beta.27",
-    "webpack-dev-server": "^2.1.0-beta.11"
+    "webpack-dev-server": "^2.1.0-beta.11",
+    "webpack-validator": "^3.0.0"
+  },
+  "scripts": {
+    "watch": "webpack --progress --colors --watch --env.dev",
+    "watch:prod": "webpack --progress --colors --watch --env.prod",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:test": "karma start --auto-watch --no-single-run",
+    "validate": "npm-run-all --parallel lint test build",
+    "clean-dist": "rimraf dist",
+    "copy-files": "cpy src/index.html src/favicon.ico dist && cpy src/images/* dist/images",
+    "clean-and-copy": "npm run clean-dist && npm run copy-files",
+    "prestart": "npm run clean-and-copy",
+    "start": "webpack-dev-server --env.dev --hot --inline --content-base ./dist --open",
+    "prebuild": "npm run clean-and-copy",
+    "prebuild:prod": "npm run clean-and-copy",
+    "build": "webpack --env.dev",
+    "build:prod": "webpack --env.prod -p",
+    "lint": "eslint ."
   }
 }
