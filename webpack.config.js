@@ -1,7 +1,8 @@
 // ES6 module
 const webpack = require('webpack');
 const path =  require('path');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractCSS = new ExtractTextPlugin('./dist/css/[name].css');
 /**
  * Originally taken from 'Getting Started with React and Redux'
  * by Alex Sears,
@@ -33,7 +34,7 @@ module.exports = env => {
          * Output settings, dest file and file name
          */
         output: {
-            path: path.resolve(__dirname, './dist'), // Automatically created by webpack
+            path: path.resolve(__dirname, './dist'),
             filename: 'app.bundle.js',
             pathinfo: !env.prod,
         },
@@ -54,16 +55,30 @@ module.exports = env => {
                     query: {
                         presets: ['es2015','react']
                     },
-                },
+                },/*
                 {
                     test: /\.js?$/,
                     exclude: /node_modules/,
                     loader: 'eslint-loader'
+                },*/
+                {
+                    test: /\.scss$/,
+                    exclude: /node_modules/,
+                    use: extractCSS.extract({
+                        fallbackLoader: 'style-loader',
+                        loader: 'css-loader?sourceMap!sass-loader?sourceMap',
+                    })
+                },
+                {
+                    test: /\.(eot)|(svg)|(ttf)|(woff)|(woff2)$/,
+                    exclude: /node_modules/,
+                    loader: 'url-loader?name=dist/fonts/[name].[ext]',
                 }
-            ],
+            ]
         },
+
         plugins: [
-            new webpack.NamedModulesPlugin(),
+            extractCSS, new webpack.NamedModulesPlugin(),
         ],
     }
 };

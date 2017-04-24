@@ -15,6 +15,8 @@ import { AppContainer } from 'react-hot-loader'; // livereload (partial)
 // webpack knows that the html file exists
 require('./index.html');
 
+require('./scss/main.scss');
+
 // we make  reference to the app container
 const container = document.getElementById('app-container');
 

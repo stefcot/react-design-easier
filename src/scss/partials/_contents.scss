@@ -1,0 +1,65 @@
+* {
+  @include user-select(none);
+  cursor: default;
+}
+
+*,
+*::before,
+*::after {
+  @include box-sizing(border-box);
+  color: #000;
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: $font-family;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $sw1-darkgrey;
+  color: $white;
+  overflow: hidden;
+  overflow-y: auto;
+
+  &--popin-opened {
+    overflow-y: hidden;
+  }
+}
+
+#root {
+  position: relative;
+  height: 100%;
+}
+
+h1 {
+  @extend .din-regular;
+  font-size: $title-size;
+  height: $title-size;
+  line-height: 1.2;
+  color: $sw1-cream;
+  width: 100%;
+  margin: 0;
+  padding: 1em 1em 0;
+  display: inline-block;
+  position: relative;
+  top: 0;
+}
+
+.container { display:block; position:relative; }
+svg.appElement { display:block; position:absolute; overflow:hidden;}
+.design-easier { position:absolute; overflow: hidden; width:800px; height:600px; margin: 10px;}
+.toolBar {z-index: 10;}
+.grid {z-index: 1;}
+.yellowFrame {z-index: 5;}
+
+#dom { position:absolute; overflow: hidden; width:780px; height:580px; top:20px; left:35px; z-index: 6; }
+.edit-container { position:absolute; width:780px; height:50px; top:565px; left:45px; z-index: 7;}
+#dom img, #dom div, #dom svg { display:block; position:absolute; }
+#text-box { background-color:#8C9; color:#000; width:100px; height:75px; padding:0.5em; overflow:hidden; }
+#svg-tool {width:100%; height:100%; }
