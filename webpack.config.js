@@ -70,7 +70,7 @@ module.exports = env => {
                     })
                 },
                 {
-                    test: /\.(eot)|(svg)|(ttf)|(woff)|(woff2)$/,
+                    test: /\.(eot)|(ttf)|(woff)|(woff2)$/,
                     exclude: /node_modules/,
                     loader: 'url-loader?name=dist/fonts/[name].[ext]',
                 }
