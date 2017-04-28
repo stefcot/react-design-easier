@@ -2,7 +2,6 @@
 const webpack = require('webpack');
 const path =  require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const extractCSS = new ExtractTextPlugin('./dist/css/[name].css');
 /**
  * Originally taken from 'Getting Started with React and Redux'
  * by Alex Sears,
@@ -55,30 +54,44 @@ module.exports = env => {
                     query: {
                         presets: ['es2015','react']
                     },
-                },/*
-                {
+                },
+                /*{
                     test: /\.js?$/,
                     exclude: /node_modules/,
                     loader: 'eslint-loader'
                 },*/
                 {
-                    test: /\.scss$/,
+                    test: [/\.css$/],
                     exclude: /node_modules/,
-                    use: extractCSS.extract({
-                        fallbackLoader: 'style-loader',
-                        loader: 'css-loader?sourceMap!sass-loader?sourceMap',
+                    loader: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: [
+                            'css-loader?modules&importLoaders=1&localIdentName=[local]',
+                            'postcss-loader'
+                        ]
                     })
                 },
                 {
-                    test: /\.(eot)|(ttf)|(woff)|(woff2)$/,
+                    test: /\.scss$/,
                     exclude: /node_modules/,
-                    loader: 'url-loader?name=dist/fonts/[name].[ext]',
+                    loader: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: [
+                            'css-loader',
+                            'sass-loader',
+                        ]
+                    })
+                },
+                {
+                    test: /\.svg|eot|ttf|woff|woff2$/,
+                    exclude: /node_modules/,
+                    loader: 'file-loader?name=fonts/[name].[ext]',
                 }
             ]
         },
 
         plugins: [
-            extractCSS, new webpack.NamedModulesPlugin(),
+            new ExtractTextPlugin('./main.css'), new webpack.NamedModulesPlugin(),
         ],
     }
 };

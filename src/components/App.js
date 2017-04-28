@@ -10,7 +10,10 @@ import TranformDOMPicturesComponents from './TranformDOMPicturesComponents';
 /**
  *
  * @see https://www.smashingmagazine.com/2015/12/generating-svg-with-react/YellowFrame
- * @constructo
+ *
+ * @param props {object}
+ *
+ * @constructor
  */
 const App = React.createClass({
     render(){
@@ -25,6 +28,6 @@ const App = React.createClass({
             </div>
         )
     }
-})
+});
 
 export default App;

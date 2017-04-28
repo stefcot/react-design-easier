@@ -19,7 +19,16 @@
 // SOFTWARE.
 
 import Matrix from './Matrix.es6';
-import { SCALE, SCALE_X, SCALE_Y, SCALE_UNIFORM, SKEW_X, SKEW_Y, ROTATE_SCALE, ROTATE, TRANSLATE, REGISTRATION, }  from './Control.es6';
+import {SCALE,
+        SCALE_X,
+        SCALE_Y,
+        SCALE_UNIFORM,
+        SKEW_X,
+        SKEW_Y,
+        ROTATE_SCALE,
+        ROTATE,
+        TRANSLATE,
+        REGISTRATION, }  from './Control.es6';
 
 export default class {
 

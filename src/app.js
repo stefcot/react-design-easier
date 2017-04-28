@@ -11,11 +11,11 @@ import App from './components/App';
 //
 import { AppContainer } from 'react-hot-loader'; // livereload (partial)
 
+require('./scss/main.scss');
+
 // that's all about webpack works, just to make sure that
 // webpack knows that the html file exists
 require('./index.html');
-
-require('./scss/main.scss');
 
 // we make  reference to the app container
 const container = document.getElementById('app-container');

@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Control, { TRANSLATE, BORDER, ROTATE, SCALE_X, SCALE_Y, SCALE, SCALE_UNIFORM } from './Control.es6';
+import Control, { TRANSLATE, BORDER, ROTATE, SCALE_X, SCALE_Y, SCALE, SCALE_UNIFORM, } from './Control.es6';
 
 const ControlSet = {
     controlClass: Control,
@@ -37,7 +37,7 @@ const ControlSet = {
             new this.controlClass(SCALE_X, 0,.5, 0,0, 10),
             new this.controlClass(SCALE_X, 1,.5, 0,0, 10),
             new this.controlClass(SCALE_Y, .5,0, 0,0, 10),
-            new this.controlClass(SCALE_Y, .5,1, 0,0, 10)
+            new this.controlClass(SCALE_Y, .5,1, 0,0, 10),
         ];
     },
 
@@ -55,7 +55,7 @@ const ControlSet = {
             new this.controlClass(SCALE_X, 0,.5, 0,0, 10),
             new this.controlClass(SCALE_X, 1,.5, 0,0, 10),
             new this.controlClass(SCALE_Y, .5,0, 0,0, 10),
-            new this.controlClass(SCALE_Y, .5,1, 0,0, 10)
+            new this.controlClass(SCALE_Y, .5,1, 0,0, 10),
         ];
     },
 
@@ -69,7 +69,7 @@ const ControlSet = {
             new this.controlClass(SCALE_UNIFORM, 0,0, 0,0, 10),
             new this.controlClass(SCALE_UNIFORM, 0,1, 0,0, 10),
             new this.controlClass(SCALE_UNIFORM, 1,0, 0,0, 10),
-            new this.controlClass(SCALE_UNIFORM, 1,1, 0,0, 10)
+            new this.controlClass(SCALE_UNIFORM, 1,1, 0,0, 10),
         ];
     },
 
@@ -90,7 +90,7 @@ const ControlSet = {
             new this.controlClass(SCALE_X, 0,.5, 0,0, 10),
             new this.controlClass(SCALE_X, 1,.5, 0,0, 10),
             new this.controlClass(SCALE_Y, .5,0, 0,0, 10),
-            new this.controlClass(SCALE_Y, .5,1, 0,0, 10)
+            new this.controlClass(SCALE_Y, .5,1, 0,0, 10),
         ];
     },
 
@@ -101,9 +101,9 @@ const ControlSet = {
 
         return [
             new this.controlClass(BORDER),
-            dyn
+            dyn,
         ];
     },
-}
+};
 
 export default ControlSet;

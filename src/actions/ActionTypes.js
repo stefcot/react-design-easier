@@ -3,9 +3,10 @@
  */
 // Edit Actions
 export const SELECT          = 'Select';
-export const SCALE           = 'Scale';
-export const ROTATE          = 'Rotate';
+export const SEND_TO_BACK    = 'SendToBack';
+export const SEND_TO_FRONT   = 'SendToFront';
 export const ERASE           = 'Erase';
+
 // History actions
 export const SAVE            = 'Save';
 export const UNDO            = 'Undo';
@@ -21,15 +22,20 @@ export const ARC             = 'Arc';
 export const PLAIN_STROKE    = 'PlainStroke';
 export const DOTTED_STROKE   = 'DottedStroke';
 export const DASHED_STROKE   = 'DashedStroke';
+export const PEN             = 'Pen';
 export const TEXTFIELD       = 'TextField';
 export const DIMENSION       = 'Dimension';
 
 // Add furniture/asset actions
 export const WINDOW          = 'Window';
 export const DOOR            = 'Door';
+export const DOUBLE_DOOR     = 'Door';
 export const BIDET           = 'Bidet';
 export const SHOWER          = 'Shower';
 export const BATH            = 'Bath';
 export const WASHBASIN       = 'Washbasin';
 export const SINK            = 'Sink';
 export const COOKER          = 'Cooker';
+
+// Separator
+export const SEPARATOR       = 'Separator';

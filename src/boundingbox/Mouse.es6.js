@@ -14,24 +14,24 @@ const Mouse = {
 
     /**
      *
-     * @param event
-     * @param elem
+     * @param ev {TouchEvent}
+     * @param elem {HTMLElement}
      * @return {Mouse} The Mouse object
      */
-    get(event, elem){
+    get(ev, elem){
         if (!elem){
-            elem = event.currentTarget;
+            elem = ev.currentTarget;
         }
 
-        if (event.touches){
-            if (event.touches.length){
-                this.x = parseInt(event.touches[0].pageX, 10);
-                this.y = parseInt(event.touches[0].pageY, 10);
+        if (ev.touches){
+            if (ev.touches.length){
+                this.x = parseInt(ev.touches[0].pageX, 10);
+                this.y = parseInt(ev.touches[0].pageY, 10);
             }
         } else {
             // mouse events
-            this.x = parseInt(event.clientX, 10);
-            this.y = parseInt(event.clientY, 10);
+            this.x = parseInt(ev.clientX, 10);
+            this.y = parseInt(ev.clientY, 10);
         }
 
         let rect = elem.getBoundingClientRect();

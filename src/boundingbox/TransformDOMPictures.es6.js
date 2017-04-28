@@ -99,10 +99,11 @@ class TramformDOMPictures {
 
     /**
      *
-     * @param event
+     * @param ev {Event}
      */
-    down(event){
-        Mouse.get(event, this.dom);
+    down(ev){
+        Mouse.get(ev, this.dom);
+
         let controlled = this.tool.start(Mouse.x, Mouse.y);
 
         // if tool wasnt selected and being controlled
@@ -121,52 +122,52 @@ class TramformDOMPictures {
         }
 
         requestAnimationFrame(this.render);
-        event.preventDefault();
+        ev.preventDefault();
     }
 
     /**
      *
-     * @param event
+     * @param ev {Event}
      */
-    move(event){
-        Mouse.get(event, this.dom);
-        this.applyDynamicControls(event);
+    move(ev){
+        Mouse.get(ev, this.dom);
+        this.applyDynamicControls(ev);
         this.tool.move(Mouse.x, Mouse.y);
 
         requestAnimationFrame(this.render);
-        event.preventDefault();
+        ev.preventDefault();
     }
 
     /**
      *
-     * @param event
+     * @param ev {Event}
      */
-    up(event){
+    up(ev){
         this.tool.end();
 
         this.dom.removeEventListener(Mouse.MOVE, this.move);
         document.removeEventListener(Mouse.END, this.up);
 
         requestAnimationFrame(this.render);
-        event.preventDefault();
+        ev.preventDefault();
     }
 
     /**
      *
-     * @param event
+     * @param ev {Event}
      */
-    applyDynamicControls(event){
+    applyDynamicControls(ev){
         // if dynamic, set controls based on
         // keyboard keys
         let dyn = this.getDynamicControl();
         if (dyn){
-            if (event.ctrlKey){
-                if (event.shiftKey){
+            if (ev.ctrlKey){
+                if (ev.shiftKey){
                     dyn.type = ROTATE_SCALE;
                 }else{
                     dyn.type = ROTATE;
                 }
-            }else if (event.shiftKey){
+            }else if (ev.shiftKey){
                 dyn.type = SCALE;
             }else{
                 dyn.type = TRANSLATE;
