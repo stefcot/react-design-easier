@@ -43,8 +43,6 @@ const Button = React.createClass ({
     },
 
     componentDidMount() {
-        console.log('Button::componentDidMount');
-
         this.renderIcon(this.props.actionType);
 
         if(this.refs.ToolBarButton) {
@@ -55,13 +53,10 @@ const Button = React.createClass ({
     },
 
     componentDidUpdate() {
-        console.log('Button::componentDidUpdate');
-
         this.renderIcon(this.props.actionType);
     },
 
     componentWillUnmount(){
-        console.log('Button::componentWillUnmount');
         if(this.refs.ToolBarButton){
             this.refs.ToolBarButton.removeEventListener('mouseover', this.onMouseOver);
             this.refs.ToolBarButton.removeEventListener('mousedown', this.onMouseDown);
@@ -69,9 +64,7 @@ const Button = React.createClass ({
         }
     },
 
-    componentWillUpdate (nextProps, nextState) {
-        console.log('Button::componentWillUpdate');
-    },
+    componentWillUpdate (nextProps, nextState) {},
 
     onMouseLeave (ev) {
         this.setState({
@@ -80,7 +73,6 @@ const Button = React.createClass ({
     },
 
     onMouseOver (ev) {
-        console.log('onMouseOver - ev.target : ', ev.target);
         this.setState({
             isOvered: true
         });
@@ -204,7 +196,6 @@ const Button = React.createClass ({
 
     render(){
         let mat = `matrix( 1, 0, 0, 1, ${this.props.x}, ${this.props.y})`;
-        console.log('Button::render');
         return(
             <g ref="ToolBarButton" className="toolBarButton" id={"ToolBarButton_" + this.props.actionType} transform={mat}>
                 {this.renderBackground()}
