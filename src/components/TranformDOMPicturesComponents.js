@@ -32,8 +32,9 @@ class TranformDOMPicturesComponents extends React.Component {
 
     render(){
         return(
-            <div className="example-container">
-                <div id="dom">
+            <div id="transform-box-example"
+                 className="transform-box-example">
+                <div id="transform-box-layer" className="transform-box-layer">
                     <AtomicImage onImageLoaded={this.onImageLoaded.bind(this)} id={'dunny'} alt={'dunny'} src={'images/dunny.png'}/>
                     <AtomicImage onImageLoaded={this.onImageLoaded.bind(this)} id={'fatcap'} alt={'fatcap'} src={'images/fatcap.png'}/>
                     <AtomicImage onImageLoaded={this.onImageLoaded.bind(this)} id={'piggy'} alt={'piggy'} src={'images/piggy.png'}/>

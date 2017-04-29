@@ -1,13 +1,13 @@
 import React from 'react';
 import * as ActionTypes from './../actions/ActionTypes';
 
-export const Components = {};
+const Icons = {};
 
 /**
  *
  * @type {React.Component}
  */
-Components[ActionTypes.SELECT] = class extends React.Component {
+Icons[ActionTypes.SELECT] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -40,7 +40,7 @@ Components[ActionTypes.SELECT] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.SEND_TO_BACK] = class extends React.Component {
+Icons[ActionTypes.SEND_TO_BACK] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -115,7 +115,7 @@ Components[ActionTypes.SEND_TO_BACK] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.SEND_TO_FRONT] = class extends React.Component {
+Icons[ActionTypes.SEND_TO_FRONT] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -192,7 +192,7 @@ Components[ActionTypes.SEND_TO_FRONT] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.SAVE] = class extends React.Component {
+Icons[ActionTypes.SAVE] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -226,7 +226,7 @@ Components[ActionTypes.SAVE] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.ERASE] = class extends React.Component {
+Icons[ActionTypes.ERASE] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -292,7 +292,7 @@ Components[ActionTypes.ERASE] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.UNDO] = class extends React.Component {
+Icons[ActionTypes.UNDO] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -321,7 +321,7 @@ Components[ActionTypes.UNDO] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.REDO] = class extends React.Component {
+Icons[ActionTypes.REDO] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -350,7 +350,7 @@ Components[ActionTypes.REDO] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.HELP] = class extends React.Component {
+Icons[ActionTypes.HELP] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -380,7 +380,7 @@ Components[ActionTypes.HELP] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.RECT] = class extends React.Component {
+Icons[ActionTypes.RECT] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -406,7 +406,7 @@ Components[ActionTypes.RECT] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.WHITE_RECT] = class extends React.Component {
+Icons[ActionTypes.WHITE_RECT] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -417,8 +417,8 @@ Components[ActionTypes.WHITE_RECT] = class extends React.Component {
                 <g id={fillId}>
                     <path stroke={this.props.color}
                           strokeWidth="1"
-                          strokeLinejoin="round"
-                          strokeLinecap="round"
+                          strokeLinejoin="miter"
+                          strokeLinecap="square"
                           fill="none" d="
                         M 17 2
                         L 0 2 0 15 17 15 17 2
@@ -437,7 +437,7 @@ Components[ActionTypes.WHITE_RECT] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.CIRCLE] = class extends React.Component {
+Icons[ActionTypes.CIRCLE] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -466,7 +466,7 @@ Components[ActionTypes.CIRCLE] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.WHITE_CIRCLE] = class extends React.Component {
+Icons[ActionTypes.WHITE_CIRCLE] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -498,7 +498,7 @@ Components[ActionTypes.WHITE_CIRCLE] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.ARC] = class extends React.Component {
+Icons[ActionTypes.ARC] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -532,7 +532,7 @@ Components[ActionTypes.ARC] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.PLAIN_STROKE] = class extends React.Component {
+Icons[ActionTypes.PLAIN_STROKE] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -590,7 +590,7 @@ Components[ActionTypes.PLAIN_STROKE] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.DOTTED_STROKE] = class extends React.Component {
+Icons[ActionTypes.DOTTED_STROKE] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -632,7 +632,7 @@ Components[ActionTypes.DOTTED_STROKE] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.DASHED_STROKE] = class extends React.Component {
+Icons[ActionTypes.DASHED_STROKE] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -680,7 +680,7 @@ Components[ActionTypes.DASHED_STROKE] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.PEN] = class extends React.Component {
+Icons[ActionTypes.PEN] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -760,7 +760,7 @@ Components[ActionTypes.PEN] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.TEXTFIELD] = class extends React.Component {
+Icons[ActionTypes.TEXTFIELD] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -846,7 +846,7 @@ Components[ActionTypes.TEXTFIELD] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.DIMENSION] = class extends React.Component {
+Icons[ActionTypes.DIMENSION] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -892,7 +892,7 @@ Components[ActionTypes.DIMENSION] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.WINDOW] = class extends React.Component {
+Icons[ActionTypes.WINDOW] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -920,7 +920,7 @@ Components[ActionTypes.WINDOW] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.DOOR] = class extends React.Component {
+Icons[ActionTypes.DOOR] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -961,7 +961,7 @@ Components[ActionTypes.DOOR] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.DOUBLE_DOOR] = class extends React.Component {
+Icons[ActionTypes.DOUBLE_DOOR] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -1000,7 +1000,7 @@ Components[ActionTypes.DOUBLE_DOOR] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.BIDET] = class extends React.Component {
+Icons[ActionTypes.BIDET] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -1070,7 +1070,7 @@ Components[ActionTypes.BIDET] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.SHOWER] = class extends React.Component {
+Icons[ActionTypes.SHOWER] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -1114,7 +1114,7 @@ Components[ActionTypes.SHOWER] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.BATH] = class extends React.Component {
+Icons[ActionTypes.BATH] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -1166,7 +1166,7 @@ Components[ActionTypes.BATH] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.WASHBASIN] = class extends React.Component {
+Icons[ActionTypes.WASHBASIN] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -1228,7 +1228,7 @@ Components[ActionTypes.WASHBASIN] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.COOKER] = class extends React.Component {
+Icons[ActionTypes.COOKER] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -1296,7 +1296,7 @@ Components[ActionTypes.COOKER] = class extends React.Component {
  *
  * @type {React.Component}
  */
-Components[ActionTypes.SINK] = class extends React.Component {
+Icons[ActionTypes.SINK] = class extends React.Component {
     render() {
         let iconId = `${this.props.name}_Icon`;
         let fillId = `${this.props.name}_FILL`;
@@ -1336,3 +1336,5 @@ Components[ActionTypes.SINK] = class extends React.Component {
         </g>);
     }
 };
+
+export default Icons;

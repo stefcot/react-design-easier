@@ -51,15 +51,53 @@ h1 {
   top: 0;
 }
 
-.container { display:block; position:relative; }
-svg.appElement { display:block; position:absolute; overflow:hidden;}
-.design-easier { position:absolute; overflow: hidden; width:800px; height:600px; margin: 10px;}
-.toolBar {z-index: 10;}
-.grid {z-index: 1;}
-.yellowFrame {z-index: 5;}
+// Design Easier Application Styles
 
-#dom { position:absolute; overflow: hidden; width:780px; height:580px; top:20px; left:35px; z-index: 6; }
-.edit-container { position:absolute; width:780px; height:50px; top:565px; left:45px; z-index: 7;}
-#dom img, #dom div, #dom svg { display:block; position:absolute; }
-#text-box { background-color:#8C9; color:#000; width:100px; height:75px; padding:0.5em; overflow:hidden; }
-#svg-tool {width:100%; height:100%; }
+#design-easier-app-container {
+  display:block;
+  position:relative;
+
+  .design-easier-app {
+    display:block;
+    position:relative;
+    overflow: hidden;
+    width:800px;
+    height:600px;
+    margin: 10px;
+
+    svg.appElement {
+      display:block;
+      position:absolute;
+      overflow:hidden;
+
+      &.toolBar {z-index: 10;}
+      &.grid {z-index: 1;}
+      &.yellowFrame {z-index: 5;}
+    }
+  }
+
+  .transform-box-example {
+
+  }
+}
+
+#transform-box-example{
+  #transform-box-layer {
+    position:absolute;
+    overflow: hidden;
+    width:780px;
+    height:580px;
+    top:10px;
+    left:20px;
+    z-index: 6;
+
+    img, div, svg {
+      display:block;
+      position:absolute;
+    }
+
+    #text-box { background-color:#8C9; color:#000; width:100px; height:75px; padding:0.5em; overflow:hidden; }
+    #svg-tool {width:100%; height:100%; }
+  }
+  .edit-container { position:absolute; width:780px; height:50px; top:565px; left:45px; z-index: 7;}
+}

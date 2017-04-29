@@ -4,7 +4,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Components } from './Icons';
+import Icons from './Icons';
 
 const Button = React.createClass ({
 
@@ -189,7 +189,7 @@ const Button = React.createClass ({
      */
     renderIcon(){
         ReactDOM.render(
-            React.createElement(Components[this.props.actionType], {color: this.getIconColor(), name: this.props.actionType}, null),
+            React.createElement(Icons[this.props.actionType], {color: this.getIconColor(), name: this.props.actionType}, null),
             document.getElementById("ToolBarButton_Icon_" + this.props.actionType)
         );
     },

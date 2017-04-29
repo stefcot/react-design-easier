@@ -23,12 +23,12 @@ class TramformDOMPictures {
         let toolElem = document.getElementById("svg-tool");
 
         this.tool = new DOMTransformTool(toolElem);
-        this.dom = document.getElementById("dom");
+        this.dom = document.getElementById("transform-box-layer");
         this.displayList = [
-            new Picture(document.getElementById("dunny"),0,0),
-            new Picture(document.getElementById("fatcap"),150,100),
-            new Picture(document.getElementById("piggy"),300,200),
-            new Picture(document.getElementById("text-box"),450,300)
+            new Picture(document.getElementById("dunny"),50,100),
+            new Picture(document.getElementById("fatcap"),250,100),
+            new Picture(document.getElementById("piggy"),400,200),
+            new Picture(document.getElementById("text-box"),650,300)
         ];
 
         toolElem.style.zIndex = this.displayList.length;

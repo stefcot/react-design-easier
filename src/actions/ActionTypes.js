@@ -29,7 +29,7 @@ export const DIMENSION       = 'Dimension';
 // Add furniture/asset actions
 export const WINDOW          = 'Window';
 export const DOOR            = 'Door';
-export const DOUBLE_DOOR     = 'Door';
+export const DOUBLE_DOOR     = 'DoubleDoor';
 export const BIDET           = 'Bidet';
 export const SHOWER          = 'Shower';
 export const BATH            = 'Bath';

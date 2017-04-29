@@ -44,7 +44,7 @@ export default class {
         this.startX = 0;
         this.startY = 0;
 
-        // trnasforms to apply
+        // transforms to apply
         this.preMatrix = new Matrix();
         this.postMatrix = new Matrix();
 
@@ -71,12 +71,13 @@ export default class {
         this.controls = [];
 
         // style guide for controls
-        this.fillStyle = "#FFF";
-        this.strokeStyle = "#08F";
-        this.lineWidth = 2;
+        this.fillStyle = "none";
+        this.strokeStyle = "#000000";
+        this.lineWidth = 1;
 	}
 
     setTarget (target){
+        console.log('TransformTool::setTarget');
         if (this.target === target){
             return;
         }
@@ -86,6 +87,7 @@ export default class {
     }
 
     updateFromTarget (){
+        console.log('TransformTool::updateFromTarget');
 		if (this.target && this.target.matrix){
 			this.endMatrix.copyFrom(this.target.matrix);
 			this.commit();
@@ -95,6 +97,7 @@ export default class {
 	}
 
     setControls (controls){
+        console.log('TransformTool::setControls');
         this.controls.length = 0;
         if (!controls || !controls.length){
             return;
@@ -109,6 +112,7 @@ export default class {
     }
 
     updateControls(){
+        console.log('TransformTool::updateControls');
         let n = this.controls.length;
         for (let i=0; i<n; i++){
             this.controls[i].updatePosition();
@@ -116,6 +120,7 @@ export default class {
     }
 
     getControlAt(x, y){
+        console.log('TransformTool::getControlAt');
         // walking in reverse order to find those
         // drawn on top (later in list) first
         let i = this.controls.length;
@@ -131,6 +136,7 @@ export default class {
     }
 
     draw(){
+        console.log('TransformTool::draw');
         if (!this.shouldDraw()){
             return;
         }
@@ -142,9 +148,17 @@ export default class {
     }
 
     shouldDraw(){
+        console.log('TransformTool::shouldDraw');
         return this.target !== null;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param control
+     * @return {boolean}
+     */
     start(x, y, control){
         if (!this.target){
             return false;
@@ -154,6 +168,9 @@ export default class {
         this.end();
 
         this.control = control || this.getControlAt(x, y);
+
+        console.log('TransformTool::start');
+
         if (this.control){
 
             this.startX = x;
@@ -179,6 +196,7 @@ export default class {
     }
 
     move(x, y){
+        console.log('TransformTool::move');
         this.updateMoveValues(x, y);
 
         if (this.control){
@@ -192,11 +210,13 @@ export default class {
     }
 
     end(){
+        console.log('TransformTool::end');
         this.commit();
         this.control = null;
     }
 
     updateMoveValues(x, y){
+        console.log('TransformTool::updateMoveValues');
         this.endX = x;
         this.endY = y;
 
@@ -209,6 +229,7 @@ export default class {
     }
 
     applyControl(){
+        console.log('TransformTool::applyControl');
         if (this.control){
 
             // for custom drawing methods, call
@@ -357,6 +378,7 @@ export default class {
     }
 
     updateRegistration(){
+        console.log('TransformTool::updateRegistration');
         let x = this.regEndU * this.target.width;
         let y = this.regEndV * this.target.height;
         let m = this.endMatrix;
@@ -365,6 +387,7 @@ export default class {
     }
 
     updateTransform(){
+        console.log('TransformTool::updateTransform');
 
         // apply transforms (pre, post)
         this.endMatrix.identity();
@@ -396,6 +419,7 @@ export default class {
     }
 
     applyRegistrationOffset(){
+        console.log('TransformTool::applyRegistrationOffset');
 
         if (this.regEndU !== 0 || this.regEndV !== 0){
             // registration offset
@@ -414,6 +438,7 @@ export default class {
     }
 
     updateTarget(){
+        console.log('TransformTool::updateTarget');
         if (this.target && this.target.matrix && !this.target.matrix.equals(this.endMatrix)){
             this.target.matrix.copyFrom(this.endMatrix);
             if (this.target.changed !== null){
@@ -423,6 +448,7 @@ export default class {
     }
 
     commit(){
+        console.log('TransformTool::commit');
         // registration
         this.regStartU = this.regEndU;
         this.regStartV = this.regEndV;
@@ -437,6 +463,7 @@ export default class {
     }
 
     sanitizeStartMatrix(){
+        console.log('TransformTool::sanitizeStartMatrix');
         if (!this.target){
             return;
         }

@@ -18,8 +18,8 @@ import TranformDOMPicturesComponents from './TranformDOMPicturesComponents';
 const App = React.createClass({
     render(){
         return(
-            <div className="container">
-                <div className="row design-easier">
+            <div id="design-easier-app-container">
+                <div className="design-easier-app">
                     <Grid />
                     <ToolBar />
                     <YellowFrame />
