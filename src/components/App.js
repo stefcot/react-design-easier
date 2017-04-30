@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import Grid from './Grid';
+import Canvas from './Canvas';
 import ToolBar from './ToolBar';
 import YellowFrame from './YellowFrame';
 import TranformDOMPicturesComponents from './TranformDOMPicturesComponents';
@@ -21,6 +22,7 @@ const App = React.createClass({
             <div id="design-easier-app-container">
                 <div className="design-easier-app">
                     <Grid />
+                    <Canvas />
                     <ToolBar />
                     <YellowFrame />
                 </div>

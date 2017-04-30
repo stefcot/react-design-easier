@@ -7,15 +7,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
+// livereload (partial)
+import { AppContainer } from 'react-hot-loader';
 
-//
-import { AppContainer } from 'react-hot-loader'; // livereload (partial)
-
+// simple reference, no conflict with extract-text-plugin
 require('./scss/main.scss');
 
 // that's all about webpack works, just to make sure that
 // webpack knows that the html file exists
-require('./index.html');
+
+// IMPORTANT : remove/comment this reference if you use
+// the above file for templating with html-webpack-plugin
+//require('./index.html');
 
 // we make  reference to the app container
 const container = document.getElementById('app-container');

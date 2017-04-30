@@ -2,6 +2,7 @@
 const webpack = require('webpack');
 const path =  require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 /**
  * Originally taken from 'Getting Started with React and Redux'
  * by Alex Sears,
@@ -45,6 +46,7 @@ module.exports = env => {
             loaders: [
                 {
                     test: /\.html$/,
+                    exclude: /index\.html$/, // you need to exclude your base template (unless you do not want this plugin own templating feature)
                     loader: 'file-loader?name=[name].[ext]',
                 },
                 {
@@ -91,7 +93,10 @@ module.exports = env => {
         },
 
         plugins: [
-            new ExtractTextPlugin('./main.css'), new webpack.NamedModulesPlugin(),
+            new ExtractTextPlugin('./main.css'),
+            new HtmlWebpackPlugin({
+                template: './src/index.html'
+            }),
         ],
     }
 };
