@@ -1,6 +1,7 @@
 // ES6 module
 const webpack = require('webpack');
 const path =  require('path');
+const banner =  require('./banner.es6');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 /**
@@ -97,6 +98,11 @@ module.exports = env => {
             new HtmlWebpackPlugin({
                 template: './src/index.html'
             }),
+            new webpack.BannerPlugin({
+                banner: banner(),
+                raw: false,
+                entryOnly: true
+            })
         ],
     }
 };

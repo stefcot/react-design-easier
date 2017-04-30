@@ -420,10 +420,8 @@ Icons[ActionTypes.WHITE_RECT] = class extends React.Component {
                           strokeLinejoin="miter"
                           strokeLinecap="square"
                           fill="none" d="
-                        M 17 2
-                        L 0 2 0 15 17 15 17 2
-                        M 16 14
-                        L 1 14 1 3 16 3 16 14 Z"/>
+                        M 17.5 2.5
+                        L 17.5 14.5 0.5 14.5 0.5 2.5 17.5 2.5"/>
                 </g>
             </defs>
 

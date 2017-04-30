@@ -22,7 +22,7 @@ const App = React.createClass({
             <div id="design-easier-app-container">
                 <div className="design-easier-app">
                     <Grid />
-                    <Canvas />
+                    <Canvas width={800} height={600} />
                     <ToolBar />
                     <YellowFrame />
                 </div>

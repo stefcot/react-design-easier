@@ -15,24 +15,20 @@ const Canvas = React.createClass({
     propTypes: {
         width:   PropTypes.number.isRequired,
         height:  PropTypes.number.isRequired,
-        x:       PropTypes.number.isRequired,
-        y:       PropTypes.number.isRequired,
     },
 
     render(){
         let viewBox = `0 0 ${this.props.width} ${this.props.height}`;
         let width = `${this.props.width}px`;
         let height = `${this.props.height}px`;
-        let x = `${this.props.x}px`;
-        let y = `${this.props.y}px`;
 
 
         return <svg xmlns="http://www.w3.org/2000/svg"
                     version="1.1"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
                     preserveAspectRatio="none"
-                    x={x}
-                    y={y}
+                    x={0 + 'px'}
+                    y={0 + 'px'}
                     width={width}
                     height={height}
                     viewBox={viewBox}
