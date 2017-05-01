@@ -24,18 +24,18 @@ import Transformable from './Transformable.es6';
 /**
  * Display list item showing a picture
  */
-class Picture {
-    constructor(image, x, y){
-        this.image = image;
+class SVGElement {
+    constructor(el, x, y){
+        this.image = el;
 
         let m = new Matrix(1,0,0,1,x,y);
-        let w = image.width || image.clientWidth;
-        let h = image.height || image.clientHeight;
+        let w = el.getBoundingClientRect().width;
+        let h = el.getBoundingClientRect().height;
 
         this.transform = new Transformable(w, h, m, this);
 
         let origin = "0 0";
-        let style = image.style;
+        let style = el.style;
         if (typeof style.transformOrigin !== "undefined"){
             style.transformOrigin = origin;
 
@@ -69,4 +69,4 @@ class Picture {
     }
 }
 
-export default Picture;
+export default SVGElement;

@@ -20,7 +20,11 @@
 
 
 //const temp = new Matrix();
-
+/**
+ * Things to study: convert a matrix into human readable data,
+ * ie: degrees, scale
+ * @see: https://math.stackexchange.com/questions/13150/extracting-rotation-scale-values-from-2d-transformation-matrix
+ */
 class Matrix {
 
     constructor(a,b,c,d,x,y){

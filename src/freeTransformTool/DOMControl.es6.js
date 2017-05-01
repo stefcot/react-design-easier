@@ -70,9 +70,6 @@ class DOMControl extends Control {
         let i = 0;
         let n = 0;
 
-        // console.log('----------------------------------------------------------');
-        // console.log('DOMControl::draw - this.shape : ', this.shape);
-
         switch(this.shape){
 
             case SHAPE_CIRCLE:{
@@ -83,12 +80,12 @@ class DOMControl extends Control {
                     this.setStyle(elem);
                     container.appendChild(elem);
                 }
-                // console.log('DOMControl::draw::SHAPE_CIRCLE - elem : ', elem);
-                // console.log('DOMControl::draw::SHAPE_CIRCLE - elem.id : ', elem.id);
-                // console.log('DOMControl::draw::SHAPE_CIRCLE - elem.r : ', elem.r);
 
-                elem.cx.baseVal.value = this.x;
-                elem.cy.baseVal.value = this.y;
+                // Add to assign a default value causing :
+                // Uncaught TypeError: Failed to set the 'value' property on 'SVGLength':
+                // The provided float value is non-finite.
+                elem.cx.baseVal.value = this.x || 0;
+                elem.cy.baseVal.value = this.y || 0;
                 break;
             }
 
@@ -101,11 +98,12 @@ class DOMControl extends Control {
                     this.setStyle(elem);
                     container.appendChild(elem);
                 }
-                // console.log('DOMControl::draw::SHAPE_SQUARE - elem : ', elem);
-                // console.log('DOMControl::draw::SHAPE_SQUARE - elem.id : ', elem.id);
 
-                elem.x.baseVal.value = (this.x - this.size/2);
-                elem.y.baseVal.value = (this.y - this.size/2);
+                // Add to assign a default value causing :
+                // Uncaught TypeError: Failed to set the 'value' property on 'SVGLength':
+                // The provided float value is non-finite.
+                elem.x.baseVal.value = (this.x - this.size/2) || 0;
+                elem.y.baseVal.value = (this.y - this.size/2) || 0;
                 break;
             }
 
@@ -119,8 +117,6 @@ class DOMControl extends Control {
                     this.setStyle(elem, false);
                     container.appendChild(elem);
                 }
-                // console.log('DOMControl::draw::SHAPE_BORDER - elem : ', elem);
-                // console.log('DOMControl::draw::SHAPE_BORDER - elem.id : ', elem.id);
 
                 let pt;
                 if (this.tool && this.tool.target){

@@ -3,13 +3,13 @@ import { TRANSLATE, BORDER, ROTATE, SCALE_X, SCALE_Y, SCALE, SCALE_UNIFORM, REGI
 import DOMControl from './DOMControl.es6';
 import ControlSet from './ControlSet.es6';
 import DOMTransformTool from './DOMTransformTool.es6';
-import Picture from './Picture.es6';
+import SVGElement from './SVGElement.es6';
 import Mouse from './Mouse.es6';
 
 /**
  *
  */
-class TramformDOMPictures {
+class FreeTransformToolController {
     /**
      *
      */
@@ -17,7 +17,6 @@ class TramformDOMPictures {
 
     /**
      *
-     * @return {TramformDOMPictures|*}
      */
     init(){
         let toolElem = document.getElementById("svg-tool");
@@ -25,10 +24,8 @@ class TramformDOMPictures {
         this.tool = new DOMTransformTool(toolElem);
         this.dom = document.getElementById("transform-box-layer");
         this.displayList = [
-            new Picture(document.getElementById("dunny"),50,100),
-            new Picture(document.getElementById("fatcap"),250,100),
-            new Picture(document.getElementById("piggy"),400,200),
-            new Picture(document.getElementById("text-box"),650,300)
+            new SVGElement(document.getElementById("Rectangle_0"),200,400),
+            new SVGElement(document.getElementById("Rectangle_1"),100,150)
         ];
 
         toolElem.style.zIndex = this.displayList.length;
@@ -42,6 +39,10 @@ class TramformDOMPictures {
         // draws initial screen
         this.render();
     }
+
+    addElementToDisplayList(){}
+
+    removeElementFromDisplayList(){}
 
     /**
      *
@@ -304,4 +305,4 @@ class TramformDOMPictures {
     };
 }
 
-export default TramformDOMPictures;
+export default FreeTransformToolController;

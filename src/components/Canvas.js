@@ -33,19 +33,51 @@ const Canvas = React.createClass({
                     height={height}
                     viewBox={viewBox}
                     className="appElement canvas">
-            <g id="Canvas"
-                  transform="matrix( 1, 0, 0, 1, 0, 0)">
-
-                <g transform="matrix( 1, 0, 0, 1, 200, 400)" id="Rectangle_10">
-                    <path stroke="#000000"
-                          strokeWidth="1"
-                          strokeLinejoin="square"
-                          strokeLinecap="square"
-                          fill="#CCCCCC" d="
-                    M 200 0
-                    L 200 100 0 100 0 0 200 0 Z "/>
+            <g transform="matrix( 1, 0, 0, 1, 200, 400)" id="Rectangle_0">
+                <path vectorEffect="non-scaling-stroke" stroke="#0099CC"
+                      strokeWidth="1"
+                      strokeLinejoin="square"
+                      strokeLinecap="square"
+                      fillOpacity={0.5}
+                      fill="#00CCFF" d="
+                M 200 0
+                L 200 100 0 100 0 0 200 0 Z "/>
+                <g transform="matrix( 1, 0, 0, 1, 0, 0)" id="text-test">
+                    <text writingMode="lr">
+                        <tspan x={100}
+                               y={50}
+                               baselineShift={0}
+                               fontFamily="Tahoma"
+                               fontWeight="bold"
+                               fontSize="12"
+                               fill="#0099CC"
+                               textAnchor="middle"
+                               xmlSpace="preserve">I am a rectangle for test</tspan>
+                    </text>
                 </g>
-
+            </g>
+            <g transform="matrix( 1, 0, 0, 1, 100, 150)" id="Rectangle_1">
+                <path vectorEffect="non-scaling-stroke" stroke="#CC9900"
+                      strokeWidth="1"
+                      strokeLinejoin="square"
+                      strokeLinecap="square"
+                      fillOpacity={0.6}
+                      fill="#FFCC00" d="
+                M 200 0
+                L 200 100 0 100 0 0 200 0 Z "/>
+                <g transform="matrix( 1, 0, 0, 1, 0, 0)" id="text-test">
+                    <text writingMode="lr">
+                        <tspan x={100}
+                               y={50}
+                               baselineShift={0}
+                               fontFamily="Tahoma"
+                               fontWeight="bold"
+                               fontSize="12"
+                               fill="#CC9900"
+                               textAnchor="middle"
+                               xmlSpace="preserve">I am another rectangle</tspan>
+                    </text>
+                </g>
             </g>
         </svg>
     }

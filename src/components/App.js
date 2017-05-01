@@ -6,7 +6,8 @@ import Grid from './Grid';
 import Canvas from './Canvas';
 import ToolBar from './ToolBar';
 import YellowFrame from './YellowFrame';
-import TranformDOMPicturesComponents from './TranformDOMPicturesComponents';
+//import TranformDOMPicturesComponents from './TranformDOMPicturesComponents';
+import FreeTransformTool from './FreeTransformTool';
 
 /**
  *
@@ -23,10 +24,10 @@ const App = React.createClass({
                 <div className="design-easier-app">
                     <Grid />
                     <Canvas width={800} height={600} />
+                    <FreeTransformTool/>
                     <ToolBar />
                     <YellowFrame />
                 </div>
-                <TranformDOMPicturesComponents/>
             </div>
         )
     }
