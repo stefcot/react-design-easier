@@ -1,1 +1,40 @@
-{}
+{
+  "ui": {
+    "toolbar": [
+      {"type":"ToolBarBg", "x":20, "y":20, "width":216, "height":44, "label":"Edit"},
+      {"type":"Button", "x":22, "y":36, "width":25, "height":25, "actionType":"ActionTypes.SELECT"},
+      {"type":"Button", "x":47, "y":36, "width":25, "height":25, "actionType":"ActionTypes.SEND_TO_BACK"},
+      {"type":"Button", "x":73, "y":36, "width":25, "height":25, "actionType":"ActionTypes.SEND_TO_FRONT"},
+      {"type":"Separator", "x":100, "y":36, "name":"ActionTypes.SEPARATOR", "color":"#333333"},
+      {"type":"Button", "x":105, "y":36, "width":25, "height":25, "actionType":"ActionTypes.ERASE"},
+      {"type":"Button", "x":131, "y":36, "width":25, "height":25, "actionType":"ActionTypes.SAVE"},
+      {"type":"Button", "x":157, "y":36, "width":25, "height":25, "actionType":"ActionTypes.UNDO"},
+      {"type":"Button", "x":183, "y":36, "width":25, "height":25, "actionType":"ActionTypes.REDO"},
+      {"type":"Button", "x":209, "y":36, "width":25, "height":25, "actionType":"ActionTypes.HELP"},
+      {"type":"ToolBarBg", "x":238, "y":20, "width":301, "height":44, "label":"Draw"},
+      {"type":"Button", "x":240, "y":36, "width":25, "height":25, "actionType":"ActionTypes.RECT"},
+      {"type":"Button", "x":266, "y":36, "width":25, "height":25, "actionType":"ActionTypes.WHITE_RECT"},
+      {"type":"Button", "x":292, "y":36, "width":25, "height":25, "actionType":"ActionTypes.CIRCLE"},
+      {"type":"Button", "x":318, "y":36, "width":25, "height":25, "actionType":"ActionTypes.WHITE_CIRCLE"},
+      {"type":"Separator", "x":345, "y":36, "name":"ActionTypes.SEPARATOR", "color":"#333333"},
+      {"type":"Button", "x":350, "y":36, "width":25, "height":25, "actionType":"ActionTypes.ARC"},
+      {"type":"Button", "x":376, "y":36, "width":25, "height":25, "actionType":"ActionTypes.PLAIN_STROKE"},
+      {"type":"Button", "x":402, "y":36, "width":25, "height":25, "actionType":"ActionTypes.DOTTED_STROKE"},
+      {"type":"Button", "x":428, "y":36, "width":25, "height":25, "actionType":"ActionTypes.DASHED_STROKE"},
+      {"type":"Button", "x":454, "y":36, "width":25, "height":25, "actionType":"ActionTypes.PEN"},
+      {"type":"Separator", "x":481, "y":36, "name":"ActionTypes.SEPARATOR", "color":"#333333"},
+      {"type":"Button", "x":486, "y":36, "width":25, "height":25, "actionType":"ActionTypes.TEXTFIELD"},
+      {"type":"Button", "x":512, "y":36, "width":25, "height":25, "actionType":"ActionTypes.DIMENSION"},
+      {"type":"ToolBarBg", "x":541, "y":20, "width":240, "height":44, "label":"Symbols"},
+      {"type":"Button", "x":543, "y":36, "width":25, "height":25, "actionType":"ActionTypes.WINDOW"},
+      {"type":"Button", "x":569, "y":36, "width":25, "height":25, "actionType":"ActionTypes.DOOR"},
+      {"type":"Button", "x":595, "y":36, "width":25, "height":25, "actionType":"ActionTypes.DOUBLE_DOOR"},
+      {"type":"Button", "x":621, "y":36, "width":25, "height":25, "actionType":"ActionTypes.BIDET"},
+      {"type":"Button", "x":647, "y":36, "width":25, "height":25, "actionType":"ActionTypes.SHOWER"},
+      {"type":"Button", "x":673, "y":36, "width":25, "height":25, "actionType":"ActionTypes.BATH"},
+      {"type":"Button", "x":699, "y":36, "width":25, "height":25, "actionType":"ActionTypes.WASHBASIN"},
+      {"type":"Button", "x":725, "y":36, "width":25, "height":25, "actionType":"ActionTypes.COOKER"},
+      {"type":"Button", "x":751, "y":36, "width":25, "height":25, "actionType":"ActionTypes.SINK"}
+    ]
+  }
+}

@@ -72,7 +72,7 @@ export default class {
 
         // style guide for controls
         this.fillStyle = "none";
-        this.strokeStyle = "#000000";
+        this.strokeStyle = "#3399FF";
         this.lineWidth = 1;
 	}
 

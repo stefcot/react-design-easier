@@ -64,6 +64,10 @@ module.exports = env => {
                     loader: 'eslint-loader'
                 },*/
                 {
+                    test: /\.json$/,
+                    use: 'json-loader'
+                },
+                {
                     test: [/\.css$/],
                     exclude: /node_modules/,
                     loader: ExtractTextPlugin.extract({
