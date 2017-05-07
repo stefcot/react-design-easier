@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 class AtomicImage extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {dimensions: {},};
+    constructor(props, ctx) {
+        super(props, ctx);
+        this.state = { dimensions: {}, };
         this.onImgLoad = this.onImgLoad.bind(this);
     }
 
@@ -20,7 +19,7 @@ class AtomicImage extends React.Component {
         this.props.onImageLoaded();
     }
 
-    render(){
+    render() {
         return <img onLoad={this.onImgLoad} id={this.props.id} alt={this.props.alt} src={this.props.src} />;
     }
 }

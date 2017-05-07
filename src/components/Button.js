@@ -196,7 +196,8 @@ const Button = React.createClass ({
 
     render(){
         let mat = `matrix( 1, 0, 0, 1, ${this.props.x}, ${this.props.y})`;
-        return(
+
+        return (
             <g ref="ToolBarButton" className="toolBarButton" id={"ToolBarButton_" + this.props.actionType} transform={mat}>
                 {this.renderBackground()}
                 <g className="toolBarButtonIcon"
