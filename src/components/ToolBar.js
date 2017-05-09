@@ -1,16 +1,10 @@
-/**
- * Created by Stephane on 4/20/2017.
- */
 import React from 'react';
-import * as ActionTypes from '../actions/ActionTypes';
 import ToolBarBg from './ToolBarBg';
 import Button from './Button';
 import Separator from './Separator';
-
 import AppConfig from '../config.json';
 
 const ToolBar = React.createClass({
-
     getDefaultProps(){
         return {
 
@@ -23,15 +17,7 @@ const ToolBar = React.createClass({
         }
     },
 
-    componentWillMount(){
-
-    },
-
-    componentDidMount(){
-
-    },
-
-    onMouseDown(ev){
+    onMouseUp(ev){
         console.log('clickButton - ev : ', ev);
         console.log('clickButton - target : ', ev.target);
         console.log('clickButton - currentTarget : ', ev.currentTarget);
@@ -55,7 +41,7 @@ const ToolBar = React.createClass({
                                    width={item.width}
                                    height={item.height}
                                    actionType={eval(item.actionType)}
-                                   onMouseDown={this.onMouseDown} />;
+                                   onMouseDown={this.onMouseUp} />;
                     break;
                 case 'Separator':
                     comp = <Separator key={'toolBar.' + index}

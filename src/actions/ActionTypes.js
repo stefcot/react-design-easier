@@ -39,3 +39,9 @@ export const COOKER          = 'Cooker';
 
 // Separator
 export const SEPARATOR       = 'Separator';
+
+// Application actions
+export const SET_CONFIG      = 'SetConfig';
+export const GET_CONFIG      = 'GetConfig';
+export const SET_UI          = 'SetUi';
+export const GET_UI          = 'GetUi';

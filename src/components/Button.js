@@ -38,6 +38,7 @@ const Button = React.createClass ({
         return {
             isOvered: false,
             isSelected: false,
+            isDown: false,
             isIdle: true,
         };
     },
@@ -80,11 +81,18 @@ const Button = React.createClass ({
 
     onMouseDown (ev) {
         this.setState({
+            isDown: true
+        });
+    },
+
+    onMouseUp (ev) {
+        this.setState({
             isOvered: !this.state.isOvered,
             isSelected: !this.state.isSelected,
+            isDown: false,
         });
 
-        this.props.onMouseDown(ev);
+        this.props.onMouseUp(ev);
     },
 
     getDefaultBackground(){

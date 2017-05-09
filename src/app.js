@@ -1,24 +1,28 @@
-/**
- * Created by Stephane on 3/16/2017.
- */
-const path = require('path');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import reducer from './actions';
+import { getConfig } from './actions/config/actions';
 
 // livereload (partial)
 import { AppContainer } from 'react-hot-loader';
 
-// simple reference, no conflict with extract-text-plugin
+// IMPORTANT:
+// ----------
+// Simple reference, no conflict with extract-text-plugin
 require('./scss/main.scss');
 
-// that's all about webpack works, just to make sure that
-// webpack knows that the html file exists
+// Create redux store
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(
+    applyMiddleware(thunk),
+));
 
-// IMPORTANT : remove/comment this reference if you use
-// the above file for templating with html-webpack-plugin
-//require('./index.html');
+// Starting App by getting config
+store.dispatch(getConfig());
 
 // we make  reference to the app container
 const container = document.getElementById('app-container');
@@ -28,9 +32,9 @@ const container = document.getElementById('app-container');
 // whose store property will be fed with the previously created store above
 ReactDOM.render(
     <AppContainer>
-        <div>
+        <Provider store={store}>
             <App />
-        </div>
+        </Provider>
     </AppContainer>,
     container
 )
@@ -41,9 +45,9 @@ if(module.hot){
     module.hot.accept('./components/App', () => {
         ReactDOM.render(
             <AppContainer>
-                <div>
+                <Provider store={store}>
                     <App />
-                </div>
+                </Provider>
             </AppContainer>,
             container
         );
