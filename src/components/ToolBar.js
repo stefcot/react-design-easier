@@ -1,10 +1,11 @@
 import React from 'react';
 import ToolBarBg from './ToolBarBg';
+import * as ActionTypes from '../actions/ActionTypes'
 import Button from './Button';
 import Separator from './Separator';
-import AppConfig from '../config.json';
 
 const ToolBar = React.createClass({
+
     getDefaultProps(){
         return {
 
@@ -18,9 +19,9 @@ const ToolBar = React.createClass({
     },
 
     onMouseUp(ev){
-        console.log('clickButton - ev : ', ev);
-        console.log('clickButton - target : ', ev.target);
-        console.log('clickButton - currentTarget : ', ev.currentTarget);
+        console.log('ToolBar::onMouseUp - ev : ', ev);
+        console.log('ToolBar::onMouseUp - target : ', ev.target);
+        console.log('ToolBar::onMouseUp - currentTarget : ', ev.currentTarget);
     },
 
     renderTools(toolbar){
@@ -56,8 +57,13 @@ const ToolBar = React.createClass({
             return comp;
         });
     },
-
+    /**
+     *
+     * @return {XML}
+     */
     render(){
+        const { ui } = this.props;
+
         return (
             <svg xmlns="http://www.w3.org/2000/svg"
                  version="1.1"
@@ -70,7 +76,7 @@ const ToolBar = React.createClass({
                  viewBox="0 0 800 70"
                  className="appElement toolBar">
                 <g id="ToolBar" transform="matrix( 1, 0, 0, 1, 0, 0)">
-                    {this.renderTools(AppConfig.ui.toolbar)}
+                    {this.renderTools(ui.toolbar)}
                 </g>
             </svg>)
     }

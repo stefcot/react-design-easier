@@ -5,7 +5,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import reducer from './actions';
-import { getConfig } from './actions/config/actions';
+import logger from './logger';
+import { getConfig } from './actions/toolbar/actions';
 
 // livereload (partial)
 import { AppContainer } from 'react-hot-loader';
@@ -16,9 +17,11 @@ import { AppContainer } from 'react-hot-loader';
 require('./scss/main.scss');
 
 // Create redux store
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ latency: 0 }) : compose;
+
 const store = createStore(reducer, composeEnhancers(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, logger)
 ));
 
 // Starting App by getting config

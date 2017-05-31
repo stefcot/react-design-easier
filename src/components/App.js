@@ -8,6 +8,7 @@ import ToolBar from './ToolBar';
 import YellowFrame from './YellowFrame';
 //import TranformDOMPicturesComponents from './TranformDOMPicturesComponents';
 import FreeTransformTool from './FreeTransformTool';
+import Toolbarcontainer from '../actions/toolbar/container';
 
 /**
  *
@@ -25,7 +26,7 @@ const App = React.createClass({
                     <Grid />
                     <Canvas width={800} height={600} />
                     <FreeTransformTool/>
-                    <ToolBar />
+                    <Toolbarcontainer />
                     <YellowFrame />
                 </div>
             </div>
