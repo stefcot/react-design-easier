@@ -134,10 +134,6 @@ coverage/
 svg
 node_modules
 bower_components
-src/scss/compass-mixins/lib
-src/scss/mathsass
-src/scss/partials/_normalize.scss
-src/js/polyfills
 
 ############################### NPM ##################################
 #npm
